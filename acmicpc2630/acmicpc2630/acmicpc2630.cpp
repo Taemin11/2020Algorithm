@@ -2,70 +2,53 @@
 #include <vector>
 using namespace std;
 
-int zero = 0;
-int one = 0;
+vector<int> color(2, 0); //0 white 1 blue
+vector<vector<int>> paper(128, vector<int>(128, 0));
+void divide(int N, int r, int c) {
 
-vector<int> cut(int start_row, int start_col, vector<vector<int>> paper, int N, int L, vector<int> color) {
-	int count = 0;
-	vector<int> colorTemp1(2, 0);
-	vector<int> colorTemp2(2, 0);
-	vector<int> colorTemp3(2, 0);
-	vector<int> colorTemp4(2, 0);
 
-	vector<vector<int>> dump(L, vector<int>(L, 0));
-	int breakpoint = 0;
-	for (int i = start_row; i < start_row + N; i++) {
-		for (int j = start_col; j < start_col + N; j++) {
-			dump[i][j] = paper[i][j];
-		}
-	}
-
-	int comp = dump[start_row][start_col];
-
-	for (int i = start_row; i < start_row + N; i++) {
-		for (int j = start_col; j < start_col + N; j++) {
-			if (dump[i][j] != comp) {
-				breakpoint = 1;
+	int dif = paper[r][c];
+	int difFlag = 0;
+	for (int i = r; i < r+N; i++) {
+		for (int j = c; j < c+N; j++) {
+			if (paper[i][j] != dif) {
+				difFlag = 1;
 				break;
 			}
 		}
-		if (breakpoint == 1) {
+		if (difFlag == 1) {
 			break;
 		}
 	}
-	if (breakpoint == 1) {
-		colorTemp1 = cut(start_row, start_col, dump, N / 2, L, color); //1
-		colorTemp2 = cut(start_row, start_col + 2/ N, dump, N/2, L, color);//2
-		colorTemp3 = cut(start_row + 2 / N, start_col, dump, N/2, L, color);//3	
-		colorTemp4 = cut(start_row + 2 / N, start_col + 2 / N, dump, N/2, L, color);//4	
+
+	if (difFlag == 1) {
+		divide( N / 2, r, c);
+		divide( N / 2, r, c + N / 2);
+		divide( N / 2, r + N / 2, c);
+		divide( N / 2, r + N / 2, c + N / 2);
 	}
 	else {
-		if (comp == 0) {
+		if (dif == 0) {
 			color[0] += 1;
 		}
 		else {
 			color[1] += 1;
 		}
 	}
-	color[0] = color[0] + colorTemp1[0] + colorTemp2[0] + colorTemp3[0] + colorTemp4[0];
-	color[1] = color[1] + colorTemp1[1] + colorTemp2[1] + colorTemp3[1] + colorTemp4[1];
-	return color;
 }
+
 
 int main() {
 	int N;
-	vector<int> color(2, 0);
 	cin >> N;
-	vector<vector<int>> paper(N, vector<int>(N, 0));
 	int cell = 0;
 	for (int i = 0; i < N; i++) {
 		for (int j = 0; j < N; j++) {
-			cin >> cell;
-			paper[i][j] = cell;
+			cin >> paper[i][j];
 		}
 	}
-	color = cut(0, 0, paper, N, N, color);
-	cout << color[0] << " ";
-	cout << color[1];
-	
+
+	divide( N, 0, 0);
+	cout << color[0] << " " << color[1];
+	return 0;
 }
