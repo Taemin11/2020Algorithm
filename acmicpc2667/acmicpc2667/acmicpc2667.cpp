@@ -1,44 +1,29 @@
 ﻿#include "pch.h"
 #include <iostream>
 #include <vector>
-#include <queue>
 #include <string>
+#include <algorithm>
 
 using namespace std;
 int N, V;
-vector<int> dir_row = { -1, 1, 0, 0 };//상하좌우
-vector<int> dir_col = { 0, 0, -1, 1 };
+vector<vector<int>> dir = { {-1,0},{1, 0},{0, -1}, {0, 1} };//상하좌우
 
 vector<vector<int>> map(25, vector<int>(25, 0));
-vector<vector<int>> checked(25, vector<int>(25, 0));
-vector<int> ans(26, 0);
-int cnt = 1;
-void bfs(int row, int col) {
-	queue<vector<int>> q;
-	q.push({ row, col });
-	checked[row][col] = cnt;
-	while (!q.empty()) {
-		vector<int> fronts = q.front();
-		checked[fronts[0]][fronts[1]] = cnt;
-		q.pop();
-		int i = row;
-		int j = col;
-		if (checked[i][j] == cnt) {
-			for (int k = 0; k < 4; k++) {
-				if (i + dir_row[k] < 0 || i + dir_row[k] >= N || j + dir_col[k] < 0 || j + dir_col[k] >= N) {
+vector<int> ans(640, 0);
 
-				}
-				else if (checked[i + dir_row[k]][j + dir_col[k]] != cnt && map[i + dir_row[k]][j + dir_col[k]] == 1) {
-					q.push({ i + dir_row[k], j + dir_col[k] });
-					checked[i + dir_row[k]][j + dir_col[k]] = cnt;
-					row = i + dir_row[k];
-					col = j + dir_col[k];
-					ans[cnt]++;
-				}
+int cnt = 0;
+
+void dfs(int a, int b, int next) {
+	map[a][b] = next;
+
+	for (int i = 0; i < 4; i++) {
+		int dy = a + dir[i][0];
+		int dx = b + dir[i][1];
+		if (dy >= 0 && dy < N && dx >= 0 && dx < N) {
+			if (map[dy][dx] == 1) {
+				dfs(dy, dx, next);
 			}
 		}
-
-
 	}
 }
 int main()
@@ -51,19 +36,33 @@ int main()
 			map[i][j] = static_cast<int>(str[i][j] - 48);
 		}
 	}
+
 	for (int i = 0; i < N; i++) {
 		for (int j = 0; j < N; j++) {
-			if (checked[i][j] == 0 && map[i][j] == 1) {
-				bfs(i, j);
+			if (map[i][j] == 1) {
 				cnt++;
+				dfs(i, j, cnt + 1);
 			}
 		}
 	}
-	cout << cnt - 1 << "\n";
-	for (int i = 1; i <= cnt; i++) {
+
+	for (int i = 0; i < N; i++) {
+		for (int j = 0; j < N; j++) {
+			if (map[i][j] > 1) {
+				ans[map[i][j] - 2]++;
+			}
+		}
+	}
+	
+	sort(ans.begin(), ans.end());
+
+	cout << cnt << endl;
+	for (int i = 0; i < 640; i++) {
 		if (ans[i] > 0) {
-			cout << ans[i] + 1 << "\n";
+			cout << ans[i] << endl;
+
 		}
 	}
 
+	return 0;
 }
