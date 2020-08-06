@@ -1,0 +1,4 @@
+﻿  swexpert7985.cpp
+C:\Users\하태민\Desktop\algorithm\2020Algorithm\swexpert7985\swexpert7985\swexpert7985.cpp(39,12): warning C4244:  '초기화 중': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\하태민\Desktop\algorithm\2020Algorithm\swexpert7985\swexpert7985\swexpert7985.cpp(51,22): warning C4018:  '<': signed 또는 unsigned가 일치하지 않습니다.
+  swexpert7985.vcxproj -> C:\Users\하태민\Desktop\algorithm\2020Algorithm\swexpert7985\Debug\swexpert7985.exe
