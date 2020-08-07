@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Express 15 for Windows Desktop
+VisualStudioVersion = 15.0.28307.779
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "swexpert1244", "swexpert1244\swexpert1244.vcxproj", "{51CBAC74-FA0C-449E-8B45-643DD4F3136D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{51CBAC74-FA0C-449E-8B45-643DD4F3136D}.Debug|x64.ActiveCfg = Debug|x64
+		{51CBAC74-FA0C-449E-8B45-643DD4F3136D}.Debug|x64.Build.0 = Debug|x64
+		{51CBAC74-FA0C-449E-8B45-643DD4F3136D}.Debug|x86.ActiveCfg = Debug|Win32
+		{51CBAC74-FA0C-449E-8B45-643DD4F3136D}.Debug|x86.Build.0 = Debug|Win32
+		{51CBAC74-FA0C-449E-8B45-643DD4F3136D}.Release|x64.ActiveCfg = Release|x64
+		{51CBAC74-FA0C-449E-8B45-643DD4F3136D}.Release|x64.Build.0 = Release|x64
+		{51CBAC74-FA0C-449E-8B45-643DD4F3136D}.Release|x86.ActiveCfg = Release|Win32
+		{51CBAC74-FA0C-449E-8B45-643DD4F3136D}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8A5AF027-01E7-4038-8B0F-A126D298B0B5}
+	EndGlobalSection
+EndGlobal

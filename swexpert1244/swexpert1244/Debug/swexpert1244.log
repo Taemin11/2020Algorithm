@@ -1,0 +1,8 @@
+﻿  swexpert1244.cpp
+c:\2020algorithm\swexpert1244\swexpert1244\swexpert1244.cpp(16): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+c:\2020algorithm\swexpert1244\swexpert1244\swexpert1244.cpp(51): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+c:\2020algorithm\swexpert1244\swexpert1244\swexpert1244.cpp(52): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+c:\2020algorithm\swexpert1244\swexpert1244\swexpert1244.cpp(79): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+c:\2020algorithm\swexpert1244\swexpert1244\swexpert1244.cpp(87): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+c:\2020algorithm\swexpert1244\swexpert1244\swexpert1244.cpp(100): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+  swexpert1244.vcxproj -> C:\2020Algorithm\swexpert1244\Debug\swexpert1244.exe
