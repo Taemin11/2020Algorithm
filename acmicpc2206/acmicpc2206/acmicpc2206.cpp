@@ -1,90 +1,64 @@
-﻿
-#include "pch.h"
+﻿#include "pch.h"
 #include <iostream>
 #include <vector>
 #include <queue>
 #include <string>
 
 using namespace std;
-
 int N, M;
-vector<vector<int>> map(1001, vector<int>(1001, 0));
-vector<vector<int>> mapo(1001, vector<int>(1001, 0));
+int map[1001][1001];
+bool visit[1001][1001][2];
 
-int dir[4][2] = { {-1, 0},{1, 0}, {0, -1}, {0, 1} };
-int mins = 1002;
-void bfs() {
+int dir[4][2] = { {1, 0}, {-1, 0}, {0, 1}, {0, -1} };
 
-	queue<vector<int>> q;
-	q.push({ 1, 0 });
-	
+int bfs() {
+	queue<pair<pair<int, int>, pair<int, int>>> q;
+	q.push(make_pair(make_pair(0, 0), make_pair(0, 1)));
+	visit[0][0][0] = true;
+
 	while (!q.empty()) {
-		vector<int> fr = q.front();
+		int row = q.front().first.first;
+		int col = q.front().first.second;
+		int b = q.front().second.first;
+		int cnt = q.front().second.second;
 		q.pop();
-		for (int k = 0; k < 4; k++) {
-			int dr = fr[0] + dir[k][0];
-			int dc = fr[1] + dir[k][1];
 
-			if (dr >= 1 && dr <= N && dc >= 1 && dc <= M && map[dr][dc] == 0) {
-				map[dr][dc] = map[fr[0]][fr[1]] + 1;
-				if (map[dr][dc] >= mins) {
-					break;
+		if (row == N - 1 && col == M - 1) {
+			return cnt;
+		}
+		for (int i = 0; i < 4; i++) {
+			int dr = row + dir[i][0];
+			int dc = col + dir[i][1];
+
+			if (dr >= 0 && dr < N && dc >= 0 && dc < M) {
+				if (map[dr][dc] == 1 && b == 0) { //벽이 있고 벽을 부순적이 없을 때
+					visit[dr][dc][1] = true;
+					q.push(make_pair(make_pair(dr, dc), make_pair(1, cnt + 1)));
 				}
-				vector<int> input = { dr, dc };
-				q.push(input);
+				else if (map[dr][dc] == 0 && visit[dr][dc][b] == false) {
+					visit[dr][dc][b] = true;
+					q.push(make_pair(make_pair(dr, dc), make_pair(b, cnt + 1)));
+				}
 			}
 		}
 	}
-	
+	return -1;
 }
 
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
 
-int main()
-{
-
-	queue<int> q;
-
-	cin >> N;
-	cin >> M;
-	
-	string str[1001];
-	for (int i = 1; i <= N; i++) {
-		cin >> str[i-1];
-		for (int j = 1; j <= M; j++) {
-			mapo[i][j] = static_cast<int>(str[i-1][j-1] - 48);
-			
+	cin >> N >> M;
+	for (int i = 0; i < N; i++) {
+		string n;
+		cin >> n;
+		for (int j = 0; j < M; j++) {
+			map[i][j] = n[j] - 48;
 		}
 	}
-	map = mapo;
-	bfs();
-	if (map[N][M] != 0 && mins > map[N][M]) {
-		mins = map[N][M];
-	}
-	map = mapo;
-	for (int i = 1; i <= N; i++) {
-		for (int j = 1; j <= M; j++) {
-			if (map[i][j] == 1) {
-				for (int k = 0; k < 2; k++) {
-					int dr1 = i + dir[k * 2][0];
-					int dc1 = j + dir[k * 2][1];
-					int dr2 = i + dir[k * 2 + 1][0];
-					int dc2 = j + dir[k * 2 + 1][1];
-					if (dr1 >= 1 && dr1 <= N && dc1 >= 1 && dc1 <= M &&
-						dr2 >= 1 && dr2 <= N && dc2 >= 1 && dc2 <= M &&
-						map[dr1][dc1] == 0 && map[dr2][dc2] == 0) {
-						map[i][j] = 0;
-						bfs();
-						if (map[N][M] != 0 && mins > map[N][M]) {
-							mins = map[N][M];
-						}
-						map = mapo;
-					}
-				}
-			}			
-		}
-	}	
-	if (mins == 1002) {
-		mins = -1;
-	}
-	cout << mins;
+
+	int ans = bfs();
+	cout << ans;
 }
