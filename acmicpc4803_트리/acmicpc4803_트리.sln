@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Express 15 for Windows Desktop
+VisualStudioVersion = 15.0.28307.779
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "acmicpc4803_트리", "acmicpc4803_트리\acmicpc4803_트리.vcxproj", "{33D06681-E6BA-4F67-8B24-0711A01E72F7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{33D06681-E6BA-4F67-8B24-0711A01E72F7}.Debug|x64.ActiveCfg = Debug|x64
+		{33D06681-E6BA-4F67-8B24-0711A01E72F7}.Debug|x64.Build.0 = Debug|x64
+		{33D06681-E6BA-4F67-8B24-0711A01E72F7}.Debug|x86.ActiveCfg = Debug|Win32
+		{33D06681-E6BA-4F67-8B24-0711A01E72F7}.Debug|x86.Build.0 = Debug|Win32
+		{33D06681-E6BA-4F67-8B24-0711A01E72F7}.Release|x64.ActiveCfg = Release|x64
+		{33D06681-E6BA-4F67-8B24-0711A01E72F7}.Release|x64.Build.0 = Release|x64
+		{33D06681-E6BA-4F67-8B24-0711A01E72F7}.Release|x86.ActiveCfg = Release|Win32
+		{33D06681-E6BA-4F67-8B24-0711A01E72F7}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0B078608-A783-45C7-945D-41679C9DFCED}
+	EndGlobalSection
+EndGlobal
